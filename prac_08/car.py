@@ -1,15 +1,9 @@
-"""
-CP1404/CP5632 Practical
-Car class
-"""
-
 
 class Car:
     """Represent a Car object."""
 
     def __init__(self, name="", fuel=0):
         """Initialise a Car instance.
-
         name: string, reference name for car
         fuel: float, one unit of fuel drives one kilometre
         """
@@ -28,7 +22,6 @@ class Car:
 
     def drive(self, distance):
         """Drive the car a given distance.
-
         Drive given distance if car has enough fuel
         or drive until fuel runs out return the distance actually driven.
         """

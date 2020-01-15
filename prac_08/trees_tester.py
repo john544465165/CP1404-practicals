@@ -1,34 +1,34 @@
-"""
-CP1404/CP5632 Practical
-Testing/example client code for trees classes
-When you complete all the subclasses, you'll see that they behave differently.
 
-"""
-import prac_08.trees as trees
+class Car:
+    """Represent a Car object."""
 
+    def __init__(self, name="", fuel=0):
+        """Initialise a Car instance.
+        name: string, reference name for car
+        fuel: float, one unit of fuel drives one kilometre
+        """
+        self.name = name
+        self.fuel = fuel
+        self.odometer = 0
 
-def main():
-    """Program to demonstrate trees of different types."""
-    # Let's make some trees of different classes (subclasses)
-    tree_list = [trees.Tree(), trees.EvenTree(), trees.UpsideDownTree(),
-                 trees.WideTree(), trees.QuickTree(), trees.FruitTree(),
-                 trees.PineTree()]
+    def __str__(self):
+        """Return a string representation of a Car object."""
+        return "{}, fuel={}, odometer={}".format(self.name, self.fuel,
+                                                 self.odometer)
 
-    # display all the trees
-    for tree in tree_list:
-        print(tree.__class__)
-        print(tree)
+    def add_fuel(self, amount):
+        """Add amount to the car's fuel."""
+        self.fuel += amount
 
-    print("Time to grow!")
-    # grow them several times
-    for _ in range(5):
-        for tree in tree_list:
-            tree.grow(5, 2)
-
-    # display all the trees again
-    for tree in tree_list:
-        print(tree.__class__)
-        print(tree)
-
-
-main()
+    def drive(self, distance):
+        """Drive the car a given distance.
+        Drive given distance if car has enough fuel
+        or drive until fuel runs out return the distance actually driven.
+        """
+        if distance > self.fuel:
+            distance = self.fuel
+            self.fuel = 0
+        else:
+            self.fuel -= distance
+        self.odometer += distance
+        return distance
